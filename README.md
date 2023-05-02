@@ -74,7 +74,7 @@ We are now at the last part of step by step guide on how to simulate STM32 proje
 ```
 NAME:Mitta Bhavishya Reddy
 REG.NO:212221230061
-```
+
 #include "main.h"
 #include "stdio.h"
 #include "stdbool.h"
@@ -111,13 +111,18 @@ int main(void)
 
 ## Output screen shots of proteus  :
 ##BUTTON OFF LED OFF CONDITION:
-<img width="![Uploading image.png…]()453" alt="image" src="https://user-images.githubusercontent.com/94679395/235636596-d91c1bc9-2ae4-4525-beee-d33abc575979.png">
+<img width="323" alt="image" src="https://user-images.githubusercontent.com/94679395/235637984-7df46ff2-be2a-4b24-b9ff-f8e5e6357c09.png">
+
 
 ## BUTTON ON LED ON CONDITION:
+<img width="320" alt="image" src="https://user-images.githubusercontent.com/94679395/235638078-7c4e3063-2668-4883-ac57-8d7007105881.png">
+
 
 
 
 ## Proteus layout(Add pdf screen shot of circuit here):
+<img width="493" alt="image" src="https://user-images.githubusercontent.com/94679395/235638181-362ee386-71a5-403c-a2c0-782f9e135714.png">
+
 
 
  
