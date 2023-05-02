@@ -111,10 +111,13 @@ int main(void)
 
 ## Output screen shots of proteus  :
 ##BUTTON OFF LED OFF CONDITION:
+
+
 <img width="323" alt="image" src="https://user-images.githubusercontent.com/94679395/235637984-7df46ff2-be2a-4b24-b9ff-f8e5e6357c09.png">
 
 
 ## BUTTON ON LED ON CONDITION:
+
 <img width="320" alt="image" src="https://user-images.githubusercontent.com/94679395/235638078-7c4e3063-2668-4883-ac57-8d7007105881.png">
 
 
