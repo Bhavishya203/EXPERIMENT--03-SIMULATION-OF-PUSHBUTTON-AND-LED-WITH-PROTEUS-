@@ -76,33 +76,121 @@ NAME:Mitta Bhavishya Reddy
 REG.NO:212221230061
 
 #include "main.h"
-#include "stdio.h"
-#include "stdbool.h"
-bool pushbutton;
+#include"stdio.h"
+#include"stdbool.h"
+bool pb;
+
+
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+
 int main(void)
 {
+ 
+
   HAL_Init();
   SystemClock_Config();
+
   MX_GPIO_Init();
+
+
   while (1)
   {
-	  pushbutton = HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_4);
-	  	  if (pushbutton == 0)
-	  	    {
-	  		  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
-	  		  HAL_Delay(250);
-	  		  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
-	  		  HAL_Delay(250);
-	  	    }
-	  	  else
-	  		{
-	  		  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
-	  		  HAL_Delay(500);
-	  		}
+    pb=  HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4);
+    if(pb==0)
+    {
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+    HAL_Delay(100);
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+    HAL_Delay(100);
+
+
+
+
+    }
+    else
+    {
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+
+    	HAL_Delay(500);
+    }
+
+
+
   }
 }
+
+void SystemClock_Config(void)
+{
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+
+  __HAL_RCC_PWR_CLK_ENABLE();
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
+ 
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+
+static void MX_GPIO_Init(void)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+ 
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+
+  GPIO_InitStruct.Pin = GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+
+  GPIO_InitStruct.Pin = GPIO_PIN_5;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+}
+
+
+void Error_Handler(void)
+{
+  
+  __disable_irq();
+  while (1)
+  {
+  }
+}
+
+#ifdef  USE_FULL_ASSERT
+
+void assert_failed(uint8_t *file, uint32_t line)
+{
+  
+}
+#endif 
 ```
 
 
@@ -113,18 +201,19 @@ int main(void)
 ##BUTTON OFF LED OFF CONDITION:
 
 
-<img width="323" alt="image" src="https://user-images.githubusercontent.com/94679395/235637984-7df46ff2-be2a-4b24-b9ff-f8e5e6357c09.png">
+<img width="506" alt="fig 1" src="https://user-images.githubusercontent.com/94679395/236777880-34529064-4e2e-4219-9e20-77b298305d13.png">
 
 
 ## BUTTON ON LED ON CONDITION:
 
-<img width="320" alt="image" src="https://user-images.githubusercontent.com/94679395/235638078-7c4e3063-2668-4883-ac57-8d7007105881.png">
+
+<img width="449" alt="fig 2" src="https://user-images.githubusercontent.com/94679395/236778958-6d2e1259-5d86-4195-853f-ffd0611e28c9.png">
 
 
 
 
 ## Proteus layout(Add pdf screen shot of circuit here):
-<img width="493" alt="image" src="https://user-images.githubusercontent.com/94679395/235638181-362ee386-71a5-403c-a2c0-782f9e135714.png">
+<img width="505" alt="fig 3" src="https://user-images.githubusercontent.com/94679395/236779046-7e6181f9-2157-46b1-92ca-189c77b9f3e1.png">
 
 
 
